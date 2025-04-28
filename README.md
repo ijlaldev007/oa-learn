@@ -75,19 +75,63 @@ This platform allows students to browse, filter, and attempt past paper question
 
 ## 🚀 Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18.x or higher
+- npm or yarn
+- MongoDB (local installation or MongoDB Atlas account)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ijlaldev007/oa-learn.git
+   cd oa-learn
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env.local
+   ```
+   Edit `.env.local` with your specific configuration.
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Project Structure
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+oa-learn/
+├── public/             # Static files
+├── src/
+│   ├── app/            # Next.js App Router
+│   │   ├── api/        # API routes
+│   │   └── ...         # Page routes
+│   ├── components/     # Reusable UI components
+│   ├── hooks/          # Custom React hooks
+│   └── utils/          # Utility functions
+├── .env.example        # Example environment variables
+├── .env.development    # Development environment variables
+├── .env.production     # Production environment variables
+└── ...                 # Config files
+```
 
 ## 🎯 Success Metrics
 
