@@ -46,10 +46,15 @@ This platform allows students to browse, filter, and attempt past paper question
 **Users Collection**
 ```json
 {
-  "name": "John Doe",
   "email": "john@example.com",
-  "passwordHash": "encryptedpassword",
-  "role": "student" // or "admin"
+  "password": "hashedpassword",
+  "firstName": "John",
+  "lastName": "Doe",
+  "role": "student", // or "admin"
+  "isActive": true,
+  "lastLogin": "2023-05-01T12:00:00Z",
+  "createdAt": "2023-01-01T10:00:00Z",
+  "updatedAt": "2023-05-01T12:00:00Z"
 }
 ```
 
@@ -57,19 +62,57 @@ This platform allows students to browse, filter, and attempt past paper question
 ```json
 {
   "name": "Physics",
-  "topics": ["Waves", "Mechanics", "Electricity"]
+  "description": "Study of matter, energy, and their interactions",
+  "imageUrl": "/images/physics.jpg",
+  "isActive": true,
+  "createdAt": "2023-01-01T10:00:00Z",
+  "updatedAt": "2023-01-01T10:00:00Z"
+}
+```
+
+**Topics Collection**
+```json
+{
+  "name": "Waves",
+  "description": "Study of wave properties and behaviors",
+  "subjectId": "ObjectId('subject_id_here')",
+  "isActive": true,
+  "createdAt": "2023-01-01T10:00:00Z",
+  "updatedAt": "2023-01-01T10:00:00Z"
 }
 ```
 
 **Questions Collection**
 ```json
 {
-  "subject": "Physics",
-  "topic": "Waves",
+  "topicId": "ObjectId('topic_id_here')",
   "year": 2021,
+  "examBoard": "Cambridge",
+  "paperNumber": "Paper 1",
+  "questionNumber": "3a",
+  "difficulty": "medium",
+  "marks": 5,
   "questionText": "Describe the behavior of light waves in different media.",
-  "paperPDF": "path/to/paper.pdf",
-  "marksSchemePDF": "path/to/marks.pdf"
+  "questionImageUrl": "/uploads/questions/q123.jpg",
+  "paperPdfUrl": "/uploads/papers/physics_2021_p1.pdf",
+  "markSchemePdfUrl": "/uploads/markschemes/physics_2021_p1_ms.pdf",
+  "isActive": true,
+  "createdAt": "2023-01-01T10:00:00Z",
+  "updatedAt": "2023-01-01T10:00:00Z"
+}
+```
+
+**Attempts Collection**
+```json
+{
+  "userId": "ObjectId('user_id_here')",
+  "questionId": "ObjectId('question_id_here')",
+  "answer": "Light waves travel at different speeds in different media, which causes refraction...",
+  "status": "completed", // or "in-progress", "saved"
+  "startedAt": "2023-05-01T12:00:00Z",
+  "completedAt": "2023-05-01T12:30:00Z",
+  "createdAt": "2023-05-01T12:00:00Z",
+  "updatedAt": "2023-05-01T12:30:00Z"
 }
 ```
 
@@ -132,7 +175,14 @@ This platform allows students to browse, filter, and attempt past paper question
    bun dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Set up MongoDB Atlas:
+   - Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+   - Create a new cluster
+   - Create a database user with read/write permissions
+   - Add your IP address to the IP access list
+   - Get your connection string and update it in `.env.development`
+
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Project Structure
 
@@ -148,6 +198,13 @@ oa-learn/
 │   │   └── Button.tsx  # Example button component
 │   ├── hooks/          # Custom React hooks
 │   │   └── useLocalStorage.ts # Local storage hook
+│   ├── lib/            # Library code
+│   │   ├── db/         # Database module
+│   │   │   ├── models/ # Mongoose models
+│   │   │   ├── connection.ts # Database connection
+│   │   │   ├── utils.ts # Database utilities
+│   │   │   └── init.ts # Database initialization
+│   │   └── utils.ts    # Utility functions
 │   └── utils/          # Utility functions
 │       ├── api.ts      # API client utilities
 │       └── formatters.ts # Text/data formatting utilities
