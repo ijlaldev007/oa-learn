@@ -182,15 +182,7 @@ This platform allows students to browse, filter, and attempt past paper question
    - Add your IP address to the IP access list
    - Get your connection string and update it in `.env.development`
 
-6. Seed the database with initial data:
-   ```bash
-   npm run db:seed
-   ```
-   This will create:
-   - An admin user (admin@oalearn.com / Admin@123)
-   - A test student (student@oalearn.com / Student@123)
-
-7. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Project Structure
 
@@ -211,8 +203,7 @@ oa-learn/
 │   │   │   ├── models/ # Mongoose models
 │   │   │   ├── connection.ts # Database connection
 │   │   │   ├── utils.ts # Database utilities
-│   │   │   ├── init.ts # Database initialization
-│   │   │   └── seed.ts # Database seeding
+│   │   │   └── init.ts # Database initialization
 │   │   └── utils.ts    # Utility functions
 │   └── utils/          # Utility functions
 │       ├── api.ts      # API client utilities

@@ -56,17 +56,7 @@ const result = await withDatabase(async () => {
 });
 ```
 
-## Seeding the Database
 
-To seed the database with initial data:
-
-```bash
-npm run db:seed
-```
-
-This will create:
-- An admin user (admin@oalearn.com / Admin@123)
-- A test student (student@oalearn.com / Student@123)
 
 ## Models
 
