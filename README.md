@@ -1,6 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ O/A Levels EdTech Platform
 
-## Getting Started
+An educational web application designed to help students prepare for O/A Level examinations by providing access to categorized past paper questions.
+
+## 🎯 Project Overview
+
+This platform allows students to browse, filter, and attempt past paper questions organized by subject and topic. The application includes both a student-facing interface and an admin panel for content management.
+
+## ✨ Core Features
+
+### Student Panel
+
+| Feature | Description |
+|:--------|:------------|
+| Signup/Login | Email + Password authentication with JWT |
+| Browse Subjects | View available subjects |
+| Browse Topics | Explore topics within each subject |
+| View Questions | Access questions organized by topic |
+| Download/View PDFs | View or download past papers and mark schemes |
+| Attempt Questions | Type answers to practice questions |
+| Filters | Filter by subject, topic, and year |
+
+### Admin Panel
+
+| Feature | Description |
+|:--------|:------------|
+| Login | Admin authentication |
+| Upload Past Papers | Upload PDF files (papers and mark schemes) |
+| Categorize Questions | Split papers into individual questions and assign metadata |
+| Edit/Delete | Manage uploaded content |
+
+## 🏗️ Tech Stack
+
+| Component | Technology |
+|:----------|:-----------|
+| Frontend | Next.js 14 (React) |
+| API Layer | Axios with Interceptors |
+| Data Fetching | React Query (TanStack) |
+| Backend | Node.js (Express.js) |
+| Database | MongoDB Atlas |
+| Authentication | JWT |
+| File Storage | Local storage (MVP) |
+
+## 📂 Database Structure
+
+**Users Collection**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "passwordHash": "encryptedpassword",
+  "role": "student" // or "admin"
+}
+```
+
+**Subjects Collection**
+```json
+{
+  "name": "Physics",
+  "topics": ["Waves", "Mechanics", "Electricity"]
+}
+```
+
+**Questions Collection**
+```json
+{
+  "subject": "Physics",
+  "topic": "Waves",
+  "year": 2021,
+  "questionText": "Describe the behavior of light waves in different media.",
+  "paperPDF": "path/to/paper.pdf",
+  "marksSchemePDF": "path/to/marks.pdf"
+}
+```
+
+## 🚀 Getting Started
 
 First, run the development server:
 
@@ -16,21 +89,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 Success Metrics
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Metric | Goal |
+|:-------|:-----|
+| Time to Launch | 4–6 weeks |
+| Students using app | 50–100 early users |
+| Admin ease of upload | <5 minutes per paper |
+| Bugs/Crashes | <5% error rate |
 
-## Learn More
+## 🔥 Future Enhancements
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- AI-powered question selection
+- Enhanced student dashboards
+- Mobile application
+- Multiple admin roles
+- Analytics dashboard
+- Cloud storage integration
