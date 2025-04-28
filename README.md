@@ -75,19 +75,93 @@ This platform allows students to browse, filter, and attempt past paper question
 
 ## 🚀 Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18.x or higher
+- npm or yarn
+- MongoDB (local installation or MongoDB Atlas account)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ijlaldev007/oa-learn.git
+   cd oa-learn
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env.local
+   ```
+   Edit `.env.local` with your specific configuration.
+
+   **Environment Configuration:**
+
+   The application uses different environment files for different deployment contexts:
+
+   - `.env.development` - Used during local development (`npm run dev`)
+   - `.env.staging` - Used in the staging environment
+   - `.env.production` - Used in the production environment
+   - `.env.local` - Used to override any of the above (not committed to git)
+
+   **Key Environment Variables:**
+
+   | Variable | Description | Example |
+   |:---------|:------------|:--------|
+   | `APP_URL` | Base URL of the application | `http://localhost:3000` |
+   | `JWT_SECRET` | Secret key for JWT tokens | `your-secret-key` |
+   | `MONGODB_URI` | MongoDB connection string | `mongodb://localhost:27017/oa-learn` |
+   | `STORAGE_TYPE` | Storage type (`local` or `s3`) | `local` |
+   | `S3_BUCKET_NAME` | S3 bucket name (if using S3) | `oa-learn-files` |
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Project Structure
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+oa-learn/
+├── public/             # Static files
+├── src/
+│   ├── app/            # Next.js App Router
+│   │   ├── api/        # API routes
+│   │   │   └── health/ # Health check endpoint
+│   │   └── ...         # Page routes
+│   ├── components/     # Reusable UI components
+│   │   └── Button.tsx  # Example button component
+│   ├── hooks/          # Custom React hooks
+│   │   └── useLocalStorage.ts # Local storage hook
+│   └── utils/          # Utility functions
+│       ├── api.ts      # API client utilities
+│       └── formatters.ts # Text/data formatting utilities
+├── middleware.ts       # Next.js middleware for API security
+├── .env.example        # Example environment variables
+├── .env.development    # Development environment variables
+├── .env.staging        # Staging environment variables
+├── .env.production     # Production environment variables
+├── tailwind.config.js  # Tailwind CSS configuration
+├── next.config.ts      # Next.js configuration
+├── postcss.config.mjs  # PostCSS configuration
+├── eslint.config.mjs   # ESLint configuration
+└── tsconfig.json       # TypeScript configuration
+```
 
 ## 🎯 Success Metrics
 
